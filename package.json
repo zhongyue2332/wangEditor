@@ -1,5 +1,5 @@
 {
-  "name": "wangeditor",
+  "name": "@zhongyue2332/wangeditor",
   "title": "wangEditor",
   "version": "3.2.0",
   "description": "wangEditor - 基于javascript和css开发的 web 富文本编辑器， 轻量、简洁、易用、开源免费",
@@ -23,7 +23,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/wangfupeng1988/wangEditor"
+      "url": "https://github.com/zhongyue2332/wangEditor"
     }
   ],
   "scripts": {
