@@ -50,7 +50,14 @@
         var editor = new E('#div5')
         editor.customConfig.customUploadImg = function (files, insert) {
             console.log(files)
-            insert('https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png')
+            // 直接传图片路径
+            // insert('https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png')
+            // 支持传入对象，支持宽高设置
+            insert({
+                src: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png',
+                width: "100px",
+                height: "100px"
+            })
         }
         editor.create()
     </script>

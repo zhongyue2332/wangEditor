@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor 插入链接时使用附件上传</title>
+</head>
+<body>
+    <p>wangEditor 插入链接时使用附件上传</p>
+    <button type="button" id="getBtn">获取内容</button>
+    <pre id="contentArea" style="border:1px solid #ddd"></pre>
+    <div id="div3">
+        <p>欢迎使用 wangEditor 富文本编辑器</p>
+    </div>  
+
+    <script type="text/javascript" src="/wangEditor.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor2 = new E('#div3')
+        editor2.customConfig.isUploadFile = true
+        // editor2.customConfig.customUploadFile = function (files, writeInput) {
+        //     console.log(files)
+        //     writeInput('https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png')
+        // }
+        editor2.create()
+        document.getElementById('getBtn').addEventListener('click', function(e){           
+            document.getElementById('contentArea').innerHTML = editor2.txt.html()
+        })
+        
+    </script>
+</body>
+</html>
