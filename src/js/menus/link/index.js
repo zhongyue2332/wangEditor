@@ -49,14 +49,22 @@ Link.prototype = {
 
     // 创建 panel
     _createPanel: function (text, link) {
+        const editor = this.editor
+        const uploadFile = editor.uploadFile
+        const config = editor.config
         // panel 中需要用到的id
         const inputLinkId = getRandom('input-link')
         const inputTextId = getRandom('input-text')
+        const inputUploadId = getRandom('input-upload')
         const btnOkId = getRandom('btn-ok')
         const btnDelId = getRandom('btn-del')
+        const btnUploadId = getRandom('btn-upload')
 
         // 是否显示“删除链接”
         const delBtnDisplay = this._active ? 'inline-block' : 'none'
+
+        // 是否显示上传按钮
+        const uploadBtnDisplay = config.isUploadFile ? 'inline-block' : 'none'
 
         // 初始化并显示 panel
         const panel = new Panel(this, {
@@ -72,7 +80,11 @@ Link.prototype = {
                             <input id="${inputLinkId}" type="text" class="block" value="${link}" placeholder="http://..."/></td>
                             <div class="w-e-button-container">
                                 <button id="${btnOkId}" class="right">插入</button>
+                                <button id="${btnUploadId}" class="left" style="display:${uploadBtnDisplay}">上传</button>
                                 <button id="${btnDelId}" class="gray right" style="display:${delBtnDisplay}">删除链接</button>
+                            </div>
+                            <div style="display:none;">
+                                <input id="${inputUploadId}" type="file"/>
                             </div>
                         </div>`,
                     // 事件绑定
@@ -91,6 +103,43 @@ Link.prototype = {
 
                                 // 返回 true，表示该事件执行完之后，panel 要关闭。否则 panel 不会关闭
                                 return true
+                            }
+                        },
+                        // 上传文件
+                        {
+                            selector: '#' + btnUploadId,
+                            type: 'click',
+                            fn: () => {
+                                const $file = $('#' + inputUploadId)
+                                const fileElem = $file[0]
+                                if (fileElem) {
+                                    fileElem.click()
+                                } else {
+                                    // 返回 true 可关闭 panel
+                                    return true
+                                }
+                            }
+                        },
+                        {
+                            // 选择文件完毕
+                            selector: '#' + inputUploadId,
+                            type: 'change',
+                            fn: () => {
+                                const $file = $('#' + inputUploadId)
+                                const fileElem = $file[0]
+                                if (!fileElem) {
+                                    // 返回 true 可关闭 panel
+                                    return true
+                                }
+    
+                                // 获取选中的 file 对象列表
+                                const fileList = fileElem.files
+                                if (fileList.length) {
+                                    uploadFile.uploadFile(fileList, inputLinkId)
+                                }
+    
+                                // 返回 true 可关闭 panel
+                                // return true
                             }
                         },
                         // 删除链接

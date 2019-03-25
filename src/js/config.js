@@ -180,6 +180,9 @@ const config = {
 
     // 上传图片，server 地址（如果有值，则 base64 格式的配置则失效）
     // uploadImgServer: '/upload',
+    
+    // 插入链接时是否显示上传按钮
+    isUploadFile: false,
 
     // 自定义配置 filename
     uploadFileName: '',
