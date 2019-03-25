@@ -39,27 +39,29 @@ UploadImg.prototype = {
         }
         const editor = this.editor
         const config = editor.config
-
+        const url = typeof link === 'object'?link.src:link
         // 校验格式
         const linkImgCheck = config.linkImgCheck
         let checkResult
         if (linkImgCheck && typeof linkImgCheck === 'function') {
-            checkResult = linkImgCheck(link)
+            checkResult = linkImgCheck(url)
             if (typeof checkResult === 'string') {
                 // 校验失败，提示信息
                 alert(checkResult)
                 return
             }
         }
-
-        editor.cmd.do('insertHTML', `<img src="${link}" style="max-width:100%;"/>`)
+        const imgStr = typeof link === 'object'?`<img src="${url}" width="${link.width}" height="${link.height}" style="max-width:100%;"/>`
+        :`<img src="${url}" style="max-width:100%;"/>`
+        
+        editor.cmd.do('insertHTML', imgStr)
 
         // 验证图片 url 是否有效，无效的话给出提示
         let img = document.createElement('img')
         img.onload = () => {
             const callback = config.linkImgCallback
             if (callback && typeof callback === 'function') {
-                callback(link)
+                callback(url)
             }
 
             img = null
@@ -67,13 +69,13 @@ UploadImg.prototype = {
         img.onerror = () => {
             img = null
             // 无法成功下载图片
-            this._alert('插入图片错误', `wangEditor: 插入图片出错，图片链接是 "${link}"，下载该链接失败`)
+            this._alert('插入图片错误', `wangEditor: 插入图片出错，图片链接是 "${url}"，下载该链接失败`)
             return
         }
         img.onabort = () => {
             img = null
         }
-        img.src = link
+        img.src = url
     },
 
     // 上传图片
