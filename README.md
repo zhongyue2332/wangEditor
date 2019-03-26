@@ -27,7 +27,7 @@
 - 直接下载：[https://github.com/zhongyue2332/wangEditor/releases](https://github.com/zhongyue2332/wangEditor/releases)
 - 使用`npm`下载：`npm install @qsmx/wangeditor` （注意 `wangeditor` 全部是**小写字母**）
 - 使用`yarn`下载：`yarn add @qsmx/wangEditor`
-- 使用CDN：[http://qsmx.site/wangEditor.min.js](http://qsmx.site/wangEditor.min.js)
+- 使用CDN：[//unpkg.com/@qsmx/wangeditor@3.2.1/release/wangEditor.min.js](https://unpkg.com/@qsmx/wangeditor@3.2.1/release/wangEditor.min.js)
 
 
 ## 使用
