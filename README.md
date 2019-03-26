@@ -1,10 +1,13 @@
 
 # wangEditor
 
-## 更新
+## 关于更新
 
- 1、插入链接时可以上传附件
- 2、上传图片后的回调支持设置宽高
+> 由于原作者长时间不更新，甚至不处理issues，加上项目有这些需求，更新如下：
+
+ 1、插入链接时可以上传附件，例子：/example/demo/test-uploadfile.html
+ 
+ 2、上传图片后的回调支持设置宽高，例子：/example/demo/test-uploadimg.html
 
 ## 介绍
 
@@ -21,10 +24,10 @@
 
 ## 下载
 
-- 直接下载：[https://github.com/wangfupeng1988/wangEditor/releases](https://github.com/wangfupeng1988/wangEditor/releases)
-- 使用`npm`下载：`npm install wangeditor` （注意 `wangeditor` 全部是**小写字母**）
-- 使用`bower`下载：`bower install wangEditor` （前提保证电脑已安装了`bower`）
-- 使用CDN：[//unpkg.com/wangeditor/release/wangEditor.min.js](https://unpkg.com/wangeditor/release/wangEditor.min.js)
+- 直接下载：[https://github.com/zhongyue2332/wangEditor/releases](https://github.com/zhongyue2332/wangEditor/releases)
+- 使用`npm`下载：`npm install @qsmx/wangeditor` （注意 `wangeditor` 全部是**小写字母**）
+- 使用`yarn`下载：`yarn add @qsmx/wangEditor`
+- 使用CDN：[http://qsmx.site/wangEditor.min.js](http://qsmx.site/wangEditor.min.js)
 
 
 ## 使用
